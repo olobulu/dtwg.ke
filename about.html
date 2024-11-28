@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Kenya Diaspora Vote</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        
+/* General Header Styling */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: hsl(204, 26%, 96%);
+    color: maroon;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Logo Styling */
+.logo img {
+    height: 50px;
+    width: auto;
+}
+
+/* Navbar Styling */
+.navbar {
+    display: flex;
+    align-items: center;
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+.nav-list li a {
+    text-decoration: none;
+    color: maroon;
+    font-size: 16px;
+    font-style: inherit;
+    transition: color 0.3s ease;
+}
+
+.nav-list li a:hover {
+    color: maroon;
+}
+
+/* Donate Button Styling */
+.donate-btn {
+    background-color: maroon;
+    color: white;
+    padding: 10px 20px;
+    margin-right: 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.donate-btn:hover {
+    background-color: darkred;
+}
+
+/* Mobile Menu Styling */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.menu-toggle .bar {
+    width: 25px;
+    height: 3px;
+    background-color: maroon;
+    border-radius: 5px;
+}
+
+/* Responsive Navigation */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex;
+        margin-bottom: 20px;
+        margin-right: 40px;
+    }
+.donate-btn{
+    display: none;
+    flex-direction: column;
+    gap: 15px;
+    color: maroon;
+    background-color: hsl(204, 26%, 96%);
+    position: absolute;
+    top: 60px;
+    right: 0;
+    padding: 10px;
+    width: 200px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+    .nav-list{
+        display: none;
+        flex-direction: column;
+        gap: 15px;
+        background-color: maroon;
+        position: absolute;
+        top: 70px;
+        right: 0;
+        padding: 10px;
+        border-radius: 8px;
+        width: 200px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    .nav-list.active {
+        display: flex;
+    }
+
+    .nav-list li a {
+        text-align: center;
+        color: white;
+    }
+
+    .donate-btn {
+        display: inline-block;
+        text-align: center;
+    }
+}
+
+       
+        .section {
+            padding: 40px 20px;
+        }
+        .section-1 {
+            background: url('images/photo1.jpg') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+            position: relative;
+            height: 90vh;
+        }
+        .section-1::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 255, 0.4); /* Blue overlay with 40% opacity */
+            z-index: 1;
+        }
+        .section-1 .content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+        .apply-btn {
+            background-color: maroon;
+            color: white;
+            border: white;
+            padding: 10px 20px;
+            margin-top: 20px;
+            cursor: pointer;
+            width:120px;
+            border-radius: 20px;
+        }
+        .section-2 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f9f9f9;
+        }
+        .section-2 .center-div {
+            display: flex;
+            justify-content: space-between;
+            width: 80%;
+            max-width: 900px;
+        }
+        .section-2 .center-div > div {
+            flex: 1;
+            padding: 20px;
+        }
+        .section-2 .center-div > div:not(:last-child) {
+            border-right: 2px solid maroon;
+        }
+        .section-3 {
+            text-align: center;
+            background-color: rgb(241, 227, 227);
+        }
+        .section-3 ul {
+            display: flex;
+            justify-content: space-between;
+            list-style: none;
+            padding: 0;
+        }
+        .section-3 ul li {
+            flex: 1;
+            padding: 10px;
+        }
+        .section-3 ul li strong {
+            display: block;
+            margin-bottom: 10px;
+        }
+        .team
+        {
+            display: flex;
+            justify-content: space-between;
+            background-color: #eaeef1;
+        }
+        .programs,
+        .team,
+        .mentors {
+            display: flex;
+            justify-content: space-between;
+        }
+        .program, .team-member, .mentor {
+            text-align: center;
+            width: 30%;
+        }
+        .mentor-section {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            margin: 20px 0;
+        }
+    
+        .mentors-container {
+            overflow-x: hidden; /* Hides the horizontal scrollbar */
+            white-space: nowrap;
+            scroll-behavior: smooth;
+            width: 80%;
+        }
+    
+        .mentors {
+            display: flex;
+        }
+    
+        .mentor {
+            display: inline-block;
+            width: 200px;
+            margin: 10px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+        .mentor img{
+            border-radius: 50%;
+        }
+    
+        .scroll-btn {
+            background-color: maroon;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 24px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+    
+        .scroll-btn.left {
+            left: 0;
+        }
+    
+        .scroll-btn.right {
+            right: 0;
+        }
+
+        
+/* Modal Style */
+.modal {
+    display: none; /* Initially hidden */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Transparent background */
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+.modal h2 {
+    text-align: center;
+    color: maroon;
+}
+
+.modal p {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #333;
+}
+
+.form-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.form-group input {
+    width: 48%; /* Make inputs take up half of the available width */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.btn-signup {
+    background-color: maroon;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.btn-signup:hover {
+    background-color: darkred;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 30px;
+    color: #aaa;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: black;
+}
+
+/* Modal Animation */
+@keyframes modalAnimation {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Ensure modal content is centered */
+.modal.show {
+    display: flex;
+    animation: modalAnimation 0.3s ease;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+    .form-group {
+        flex-direction: column; /* Stack form fields vertically on small screens */
+    }
+
+    .form-group input {
+        width: 100%;
+    }
+}
+
+
+        footer {
+            background-color: #004d99;
+            color: white;
+            text-align: center;
+            padding: 10px 20px;
+        }
+        /* Responsive Styling for Small Screens */
+@media (max-width: 768px) {
+    /* Section-1 Adjustments */
+    .section-1 .content {
+        text-align: center;
+        padding: 20px;
+    }
+
+    /* Section-2 Adjustments */
+    .section-2 .center-div {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .section-2 .center-div > div {
+        border-right: none;
+        border-bottom: 2px solid maroon;
+    }
+    .section-2 .center-div > div:last-child {
+        border-bottom: none;
+    }
+
+    /* Section-3 Adjustments */
+    .section-3 ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    /* Team, Programs, and Mentors Adjustments */
+    .team,
+    .programs
+ {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .mentors-container {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        gap: 16px;
+        padding: 8px;
+    }
+
+    .mentor {
+        flex: 0 0 auto; /* Prevent wrapping */
+        width: 80%;
+        max-width: 200px; /* Limit card width */
+        margin: 8px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: #fff;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        padding: 16px;
+        text-align: center;
+    }
+
+    .mentor img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+
+    .mentor h3 {
+        font-size: 18px;
+        margin-top: 12px;
+        color: #333;
+    }
+
+    .mentor p {
+        font-size: 14px;
+        color: #666;
+        margin-top: 8px;
+        line-height: 1.5;
+    }
+    .scroll-btn {
+        background-color: white;
+        color: maroon;
+        transform: translateY(-50%);
+    }
+    .program, .team-member{
+        width: 100%;
+    }
+
+    /* Footer Adjustments */
+    footer {
+        margin-top: 20px;
+        text-align: left;
+        padding: 15px;
+    }
+}
+
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+            <img src="images/logo1.jpg" style="height: 80px; margin-left:50px;">
+        </div>
+        <nav class="navbar">
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-list">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#" id="joinUsLink">Join Us</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="joinus.html">2027 kenyan election</a></li>
+                <li><a href="donate.html">Donate</a></li>
+                <li><a href="activities.html">Activities</a></li>
+            </ul>
+        </nav>
+        
+        <button class="donate-btn">Donate</button>
+    </header>
+
+    <!-- Section 1 -->
+    <section class="section section-1">
+        <div class="content">
+            <h1>The Voice of Diaspora in Kenya</h1>
+            <br>
+            <br>
+            <h2 style="font-size: 60px;">THINK LOCAL, GO GLOBAL</h2>
+            <br>
+            <br>
+            <br>
+            <br>
+            <button class="apply-btn">Apply</button>
+        </div>
+    </section>
+
+    <!-- Section 2 -->
+    <section class="section section-2">
+        <div class="center-div">
+            <div>
+                <h2 style="margin-top: 50%; color:maroon; font-size:40px;">THINK LOCAL, GO GLOBAL</h2>
+                <br>
+                <h4>About the Diaspora Technical Working Group</h4>
+            </div>
+            <div>
+                <p>The Diaspora Technical Working Group is a dedicated coalition of Kenyan citizens residing in countries in the Africa region , Asia+Oceania region, Europe region, North America region, South America region and Middle East region, united by a shared commitment to enhancing the voting rights of the Kenyan diaspora. 
+                      <br>
+                      <br>
+                    The team is composed of diverse professionals from various sectors, including law, technology, education, business, healthcare, and research. Their collective expertise is vital for developing and implementing effective strategies that facilitate diaspora voting.
+                     <br>
+                     <br>
+                    Membership within the group is drawn from influential leaders across professionals, political, religious, business, and diaspora associations/organizations. The team reflects Kenya's rich diversity, including representatives from multiple ethnicities, youth, women, and individuals with disabilities, ensuring that its operations are inclusive and representative of the entire Kenyan diaspora.
+                    `<br>
+                    <br>
+                    The primary mission of the DTWG is to advocate for comprehensive Kenyan diaspora voting rights. The group aims to address the disenfranchisement of Kenyan voters abroad (in the Diaspora)through:
+                    .</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3 -->
+    <section class="section section-3">
+        <h1 style="color: maroon; font-size: 35px;">WHAT WE DO</h1>
+        <br>
+        <p>Making sure the diaspora is part of kenyan’s development</p>
+        <ul>
+            <li>
+                <img src="images/vision.png" style="border-radius: 50%;">
+                <br>
+                <strong style="color: maroon; font-size: 30px;">VISION:</strong>
+                <br>
+                We are driven by our vision of a Kenyan where more opportunities and consideration is given to diaspora members in policymaking.
+            </li>
+            <li>
+                <img src="images/vision.png" style="border-radius: 50%;">
+                <br>
+                <strong style="color: maroon; font-size: 30px;">MISSION:</strong>
+                <br>
+                To become a reference for diaspora members willing to learn about Kenyan institutions and provide opportunities for youth.
+            </li>
+        </ul>
+    </section>
+
+    <!-- Section 4 -->
+    <section class="section">
+        <h2 style="text-align: center; color:maroon; font-size:40px">Programs and Events</h2>
+        <br>
+        <p style="text-align: center; color:maroon; font-size:20px">Discover how we turn our vision into concrete actions</p>
+        <br>
+        <div class="programs">
+            <div class="program">
+                <img src="images/photo2.jpg" alt="Program 1" width="100%">
+                <h2>Events & Campaigns</h2>
+                <p>The page will provide you with upcoming events and information our campaigns on how to take part in them.</p>
+            </div>
+            <div class="program">
+                <img src="images/press.jpg" alt="Program 2" width="100%">
+                <h2>Press Releases</h2>
+                <p>The page will provide you with #DiasporaVote! Statements and call-out</p>
+            </div>
+            <div class="program">
+                <img src="images/iebc.jpg" alt="Program 3" width="100%">
+                <h2>Education 2.0</h2>
+                <p>We believe in peers to peers learning and learning by doing. Listen to our #DiasporaVote! youth and learn with them. Below you will find weekly content and explanation on the EU and on the various legislation they are working on.
+
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5 -->
+    <section class="section">
+        <h2 style="text-align: center; color:maroon; font-size:40px">Our Team</h2>
+        <br>
+        <div class="team">
+            <div class="team-member">
+                <img src="images/img4.jpg" alt="Team Member 1" width="100%">
+                <h2>DANson MUKILE</h2>
+                <p>Diaspora Youth representative and chairman Diaspora votes .</p>
+            </div>
+            <div class="team-member">
+                <img src="images/img6.jpg" alt="Team Member 2" width="100%">
+                <h2>SYLVIA MULAMA</h2>
+                <p>MP wesland aspirant.</p>
+            </div>
+            <div class="team-member">
+                <img src="images/sec.jpg" alt="Team Member 3" width="100%">
+                <h2>JACOB JUMA</h2>
+                <p>Secretary general diapora associations.</p>
+            </div>
+        </div>
+    </section>
+<!-- Section 6 -->
+<section class="section">
+    <h2 style="text-align: center; color: maroon; font-size: 40px">Mentors</h2>
+    <br>
+    <div class="mentor-section">
+        <button class="scroll-btn left" onclick="scrollMentors(-1)">&#10094;</button>
+        <div class="mentors-container">
+            <div class="mentors">
+                <div class="mentor">
+                    <img src="images/memtor1.jpg" alt="Mentor 1" width="100%">
+                    <h2>Mentor 1</h2>
+                    <p>Description of Mentor 1.</p>
+                </div>
+                <div class="mentor">
+                    <img src="images/memtor2.jpg" alt="Mentor 2" width="100%">
+                    <h2>Mentor 2</h2>
+                    <p>Description of Mentor 2.</p>
+                </div>
+                <div class="mentor">
+                    <img src="images/memtor3.jpg" alt="Mentor 3" width="100%">
+                    <h2>Mentor 3</h2>
+                    <p>Description of Mentor 3.</p>
+                </div>
+                <div class="mentor">
+                    <img src="images/memtor4.jpg" alt="Mentor 4" width="100%">
+                    <h2>Mentor 4</h2>
+                    <p>Description of Mentor 4.</p>
+                </div>
+                <div class="mentor">
+                    <img src="images/memtor5.jpg" alt="Mentor 4" width="100%">
+                    <h2>Mentor 5</h2>
+                    <p>Description of Mentor 4.</p>
+                </div>
+                <div class="mentor">
+                    <img src="images/memtor6.jpg" alt="Mentor 4" width="100%">
+                    <h2>Mentor 6</h2>
+                    <p>Description of Mentor 4.</p>
+                </div>
+                <div class="mentor">
+                    <img src="images/memtor7.jpg" alt="Mentor 4" width="100%">
+                    <h2>Mentor 7</h2>
+                    <p>Description of Mentor 4.</p>
+                </div>
+                <div class="mentor">
+                    <img src="images/memtor8.jpg" alt="Mentor 4" width="100%">
+                    <h2>Mentor 8</h2>
+                    <p>Description of Mentor 8.</p>
+                </div>
+                <div class="mentor">
+                    <img src="images/memtor9.jpg" alt="Mentor 4" width="100%">
+                    <h2>Mentor 4</h2>
+                    <p>Description of Mentor 4.</p>
+                </div>
+                <div class="mentor">
+                    <img src="images/memtor10.jpg" alt="Mentor 4" width="100%">
+                    <h2>Mentor 4</h2>
+                    <p>Description of Mentor 4.</p>
+                </div>
+            </div>
+        </div>
+        <button class="scroll-btn right" onclick="scrollMentors(1)">&#10095;</button>
+    </div>
+</section>
+    <!-- Section 7 -->
+    <section class="section" style="background-color: maroon;">
+        <h2 style="text-align: center; color: white; font-size: 40px">TESTIMONIALS</h2>
+        <br>
+        <blockquote style="text-align: center; color:white; height:10vh;">
+            “I joined #DiasporaVote! because transmitting knowledge, encouraging mental change that leads to concrete societal impact is part of our duty of remembrance.”
+            <br> 🌍 Proverb – It takes a village to raise a child.
+        </blockquote>
+    </section>
+    <!-- Modal Structure -->
+<div id="joinModal" class="modal">
+    <div class="modal-content">
+        <h2>Subscribe To Our Newsletter</h2>
+        <p>Join our mailing list to receive the latest news and updates from our team.</p>
+        <form id="subscribeForm" action="#" method="POST">
+            <div class="form-group">
+                <input type="text" id="name" name="name" placeholder="Your Name" required>
+                <input type="email" id="email" name="email" placeholder="Your Email" required>
+            </div>
+            <button type="submit" class="btn-signup">Sign Up</button>
+        </form>
+        <span id="closeModal" class="close-btn">&times;</span>
+    </div>
+</div>
+    <!-- Footer Section -->
+    <footer>
+        <div>&copy; 2024 Kenya Diaspora Vote</div>
+        <div>Follow Us: <a href="#">Facebook</a> | <a href="#">Twitter</a></div>
+    </footer>
+    <script>
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navList = document.querySelector('.nav-list');
+    
+        mobileMenu.addEventListener('click', () => {
+            navList.classList.toggle('active');
+        });
+        function scrollMentors(direction) {
+            const container = document.querySelector('.mentors-container');
+            const scrollAmount = container.offsetWidth / 2; // Adjust scrolling by half the container width
+            container.scrollBy({
+                left: direction * scrollAmount,
+                behavior: 'smooth'
+            });
+        }
+        // Get the modal and join link
+const modal = document.getElementById('joinModal');
+const joinUsLink = document.getElementById('joinUsLink'); // Link that opens the modal
+const closeModal = document.getElementById('closeModal'); // Close button for the modal
+
+// Open the modal when the "Join Us" link is clicked
+joinUsLink.addEventListener('click', (event) => {
+    event.preventDefault(); // Prevent the default link action (so it doesn't navigate)
+    modal.classList.add('show'); // Show the modal
+});
+
+// Close the modal when the close button is clicked
+closeModal.addEventListener('click', () => {
+    modal.classList.remove('show'); // Hide the modal
+});
+
+// Close the modal if the user clicks outside the modal content
+window.addEventListener('click', (event) => {
+    if (event.target === modal) {
+        modal.classList.remove('show'); // Hide the modal if clicked outside
+    }
+});
+
+    </script>
+</body>
+</html>

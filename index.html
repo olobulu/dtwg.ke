@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kenyans Abroad Voting</title>
+   <style>
+   /* Universal Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    color: black;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+/* General Header Styling */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: hsl(204, 26%, 96%);
+    color: maroon;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Logo Styling */
+.logo img {
+    height: 50px;
+    width: auto;
+}
+
+/* Navbar Styling */
+.navbar {
+    display: flex;
+    align-items: center;
+}
+
+.nav-list {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+.nav-list li a {
+    text-decoration: none;
+    color: maroon;
+    font-size: 16px;
+    font-style: inherit;
+    transition: color 0.3s ease;
+}
+
+.nav-list li a:hover {
+    color: maroon;
+}
+
+/* Donate Button Styling */
+.donate-btn {
+    background-color: maroon;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.donate-btn:hover {
+    background-color: darkred;
+}
+
+/* Mobile Menu Styling */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.menu-toggle .bar {
+    width: 25px;
+    height: 3px;
+    background-color: maroon;
+    border-radius: 5px;
+}
+
+/* Responsive Navigation */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex;
+        margin-bottom: 20px;
+    }
+    .donate-btn{
+        display: none;
+        flex-direction: column;
+        gap: 15px;
+        color: maroon;
+        background-color: hsl(204, 26%, 96%);
+        position: absolute;
+        top: 60px;
+        right: 0;
+        padding: 10px;
+        width: 200px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+    
+
+    .nav-list {
+        display: none;
+        flex-direction: column;
+        gap: 15px;
+        background-color: maroon;
+        position: absolute;
+        top: 90px;
+        right: 0;
+        padding: 10px;
+        border-radius: 8px;
+        width: 200px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    .nav-list.active {
+        display: flex;
+    }
+
+    .nav-list li a {
+        text-align: center;
+        color: white;
+    }
+
+    .donate-btn {
+        display: inline-block;
+        text-align: center;
+    }
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    text-align: center;
+    padding: 50px;
+    background-color: black;
+    background-image: url('images/homepage2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+    height: 95vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(60, 40, 236, 0.4);
+    z-index: 1;
+}
+
+.hero button {
+    z-index: 2;
+}
+
+/* Join Button */
+.join-btn {
+    background-color: maroon;
+    padding: 10px 20px;
+    color: white;
+    border-radius: 20px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 45%;
+}
+
+@media (max-width: 768px) {
+    .join-btn {
+        margin-top: 220%;
+    }
+}
+
+/* Image Responsiveness */
+.center-image,
+.partner-logos img {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    margin: 0 auto;
+    display: block;
+}
+
+/* Information Section */
+.info {
+    text-align: center;
+    padding: 50px;
+}
+
+.info h1 {
+    font-size: 56px;
+    color: maroon;
+    text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+    .info h1 {
+        font-size: 40px;
+    }
+}
+
+.info p {
+    font-size: 18px;
+    line-height: 1.5;
+    color: #333;
+    max-width: 800px;
+    margin: 20px auto;
+}
+
+/* Black Section Styling */
+.info1 {
+    padding: 40px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    line-height: 1.8;
+    border-radius: 8px;
+}
+
+.info1 h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.info1 p {
+    font-size: 16px;
+    color: #dcdcdc;
+    max-width: 800px;
+    margin: 0 auto 20px;
+}
+
+/* Partners Section */
+.partners {
+    text-align: center;
+    padding: 50px;
+}
+
+.partner-logos {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.partner-logos img {
+    width: 150px;
+    height: auto;
+}
+
+/* Modal Style */
+.modal {
+    display: none; /* Initially hidden */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Transparent background */
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+h2 {
+    text-align: center;
+    color: maroon;
+}
+
+p {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #333;
+}
+
+.form-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.form-group input {
+    width: 48%; /* Make inputs take up half of the available width */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.btn-signup {
+    background-color: maroon;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.btn-signup:hover {
+    background-color: darkred;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 30px;
+    color: #aaa;
+    cursor: pointer;
+}
+
+.close-btn:hover {
+    color: black;
+}
+
+/* Modal Animation */
+@keyframes modalAnimation {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Ensure modal content is centered */
+.modal.show {
+    display: flex;
+    animation: modalAnimation 0.3s ease;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+    .form-group {
+        flex-direction: column; /* Stack form fields vertically on small screens */
+    }
+
+    .form-group input {
+        width: 100%;
+    }
+}
+
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: black;
+    color: white;
+    margin-top: 20px;
+}
+
+footer a {
+    color: maroon;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+    
+   </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+            <img src="images/logo1.jpg" style="height: 80px; margin-left:50px;">
+        </div>
+        <nav class="navbar">
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="nav-list">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#" id="joinUsLink">Join Us</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="joinus.html">2027 kenyan election</a></li>
+                <li><a href="donate.html">Donate</a></li>
+                <li><a href="activities.html">Activities</a></li>
+            </ul>
+        </nav>
+        
+        <button class="donate-btn">Donate</button>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+       <!-- Modal Trigger Button -->
+       <button class="join-btn" id="joinBtn">Join Us</button>
+    </section>
+
+    <!-- Information Section -->
+    <section class="info">
+        <h1>THINK LOCAL GO GLOBAL !</h1>
+        <p>#DiasporaVote! ensures greater representation and inclusion for Kenyans living abroad. We empower them to understand their voting rights, advocate for participation, and navigate Kenya's political and electoral processes.</p>
+    </section>
+
+    <!-- Information Section -->
+<section class="info1">
+    <h2  style="color: maroon;">Amplifying the Voices of Kenyans in the Diaspora</h2>
+    <p>#DiasporaVote! ensures greater representation and inclusion for Kenyans living abroad. We help them advocate for their voting rights and stay engaged in Kenya's political and electoral processes.</p>
+    <br>
+    <h2>REPRESENTATION</h2>
+    <p>We act as a bridge for Kenyans in the diaspora to understand how government policies affect their rights and participation.</p>
+    <br>
+    <h2>EDUCATION</h2>
+    <p>We provide insights into Kenya's political and electoral systems, empowering diasporic communities with the knowledge to make informed decisions.</p>
+    <br>
+    <h2>OPPORTUNITIES</h2>
+    <p>Through our programs, we create opportunities for Kenyan youth in the diaspora to engage in policy-making and civic leadership.</p>
+    <br>
+    <img src="images/diasvote.jpg" class="center-image">
+    <h2 style="color: maroon;">WE ARE DRIVEN BY FOUR VALUES</h2>
+    <br>
+    <h2>DIVERSITY</h2>
+    <p>We value diversity even amongst the diaspora. Therefore, we welcome all members of the diaspora regardless of their gender, social status, sexual orientation,(dis)abilities, and education. All the voices should be heard!</p>
+    <br>
+    <h2>INCLUSION</h2>
+    <p>Diaspora youths are now part of the present and the future of Europe. Therefore, we believe they should be included and their voices considered when deciding on policies that will shape the Europe of tomorrow.</p>
+    <br>
+    <h2>ACTION</h2>
+    <p>In a world where the voice of minorities is rarely heard by policy makers, we carry the concerns of racialised communities to the table of the decision makers, discuss solutions and makes sure decisions turn into action plans.</p>
+    <br>
+    <br>
+    <h2>EDUCATION</h2>
+    <p>We aims at becoming a space providing mentoring, guidance and learning for racialised diaspora in Europe.</p>
+</section>
+
+
+  <!-- Partners Section -->
+<section class="partners">
+    <h2 style="color: maroon; font-size: 40px; text-transform: uppercase;">Our Partners</h2>
+<br>
+<br>
+    <!-- Institutions Subsection -->
+    <div class="partners-section institutions">
+        <h3 style="font-size: 30px; text-transform:uppercase">Institutions</h3>
+        <br>
+        <div class="partner-logos">
+            <img src="images/propeace.jpg" alt="Partner 1">
+            <img src="images/iebc.png" alt="Partner 2"> <!-- Example: LSK Logo -->
+            <img src="images/center.jpg" alt="Partner 3"> <!-- Example: Other Institution -->
+        </div>
+    </div>
+<br>
+<br>
+    <!-- Diaspora Associations Subsection -->
+    <div class="partners-section diaspora">
+        <h3 style="font-size: 30px; text-transform:uppercase; text-align:center">Diaspora Associations & <br>Organizations</h3>
+        <div class="partner-logos">
+            <img src="images/florida.jpg" alt="Partner 4">
+            <img src="images/welfare.png" alt="Partner 5"> <!-- Example: Diaspora Organization -->
+            <img src="images/akd.jpg" alt="Partner 5"> <!-- Example: Diaspora Organization -->
+        </div>
+    </div>
+</section>
+
+<!-- Modal Structure -->
+<div id="joinModal" class="modal">
+    <div class="modal-content">
+        <h2>Subscribe To Our Newsletter</h2>
+        <p>Join our mailing list to receive the latest news and updates from our team.</p>
+        <form id="subscribeForm" action="#" method="POST">
+            <div class="form-group">
+                <input type="text" id="name" name="name" placeholder="Your Name" required>
+                <input type="email" id="email" name="email" placeholder="Your Email" required>
+            </div>
+            <button type="submit" class="btn-signup">Sign Up</button>
+        </form>
+        <span id="closeModal" class="close-btn">&times;</span>
+    </div>
+</div>
+    <!-- Footer Section -->
+    <footer>
+        <div>&copy; 2024 Kenya Diaspora Vote</div>
+        <div>Follow Us: <a href="#">Facebook</a> | <a href="#">Twitter</a></div>
+    </footer>
+    <script>
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navList = document.querySelector('.nav-list');
+    
+        mobileMenu.addEventListener('click', () => {
+            navList.classList.toggle('active');
+        });
+            // Get the modal, button, and close elements
+const modal = document.getElementById('joinModal');
+const joinUsLink = document.getElementById('joinUsLink'); // Link that opens the modal
+const joinBtn = document.getElementById('joinBtn'); // Button that opens the modal
+const closeModal = document.getElementById('closeModal'); // Close button for the modal
+
+// Open the modal when the "Join Us" link is clicked
+joinUsLink.addEventListener('click', (event) => {
+    event.preventDefault(); // Prevent the default link action (so it doesn't navigate)
+    modal.classList.add('show'); // Show the modal
+});
+
+// Open the modal when the "Join Us" button is clicked
+joinBtn.addEventListener('click', () => {
+    modal.classList.add('show'); // Show the modal
+});
+
+// Close the modal when the close button is clicked
+closeModal.addEventListener('click', () => {
+    modal.classList.remove('show'); // Hide the modal
+});
+
+// Close the modal if the user clicks outside the modal content
+window.addEventListener('click', (event) => {
+    if (event.target === modal) {
+        modal.classList.remove('show'); // Hide the modal if clicked outside
+    }
+});
+    </script>
+    
+</body>
+</html>
